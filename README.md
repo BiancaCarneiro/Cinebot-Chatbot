@@ -2,6 +2,8 @@
 
 Dataset: https://github.com/google-research-datasets/ccpe
 
+Dataset chat-gpt: https://drive.google.com/drive/folders/13gh-mX-EJZbzJIJCOxNQTuqVjFqWf0fL?usp=drive_link
+
 Dataset informações: https://www.kaggle.com/datasets/ashirwadsangwan/imdb-dataset/data
  - https://www.kaggle.com/datasets/harshitshankhdhar/imdb-dataset-of-top-1000-movies-and-tv-shows
  - QA movies: https://huggingface.co/datasets/wiki_movies?row=2
