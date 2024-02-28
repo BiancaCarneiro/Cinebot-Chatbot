@@ -2,8 +2,22 @@ import torch
 import torch.nn as nn
 import torch.optim as optim
 from tqdm.auto import tqdm
-from common import *
 
+
+def prepare_sequence(seq: list, word_to_ix:dict, device:torch.DeviceObjType):
+    idxs = [word_to_ix[w] for w in seq]
+    return torch.tensor(idxs, dtype=torch.long, device=device)
+
+def one_hot_encoding_mapper(data:list) -> tuple[dict, dict]:
+    word_to_ix = {}
+    tag_to_ix = {}
+    for sentence, tag in data:
+        for idx in range(len(sentence)):
+            if sentence[idx] not in word_to_ix:
+                word_to_ix[sentence[idx]] = len(word_to_ix)
+            if tag[idx] not in tag_to_ix:
+                tag_to_ix[tag[idx]] = len(tag_to_ix)
+    return word_to_ix, tag_to_ix
 
 
 class LSTMModel(nn.Module):
@@ -34,8 +48,10 @@ def train_lstm(
         tag_to_ix:dict,
         embedding_dim:int,
         hidden_dim:int,
-        patience:int = 5
+        patience:int = 5,
+        lr:float = 0.1
     ) -> LSTMModel:
+    
     best_val_loss = float('inf')
     counter = 0
     vocab_size = len(word_to_ix)
@@ -46,7 +62,7 @@ def train_lstm(
     model = LSTMModel(embedding_dim, hidden_dim, vocab_size, output_dim).to(device)
     
     loss_function = nn.NLLLoss()
-    optimizer = optim.SGD(model.parameters(), lr=0.1)
+    optimizer = optim.SGD(model.parameters(), lr=lr)
     
     print(f"Treinando LSTM no device {device}")
     
