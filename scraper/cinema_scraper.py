@@ -55,9 +55,9 @@ class CinemaSpider:
 
 def main():
     spider = CinemaSpider()
-    spider.get_movies_info()
+    spider.get_times_dir()
     print(spider.movies_dir)
-    spider.get_price_info()
+    spider.get_prices()
     print(spider.movies_prices)
 
 
