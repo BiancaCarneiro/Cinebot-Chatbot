@@ -16,13 +16,11 @@ class CinemaSpider:
     @sleep_and_retry
     @limits(calls=MAX_CALLS_PER_SECOND, period=PERIOD)
     def _limiter(self):
-        """Limits the number of requests per second"""
         return
 
-    def get_movies_info(self) -> None:
-        """Get the movies and their schedules from the cinema's website."""
-
+    def _scrap_movies_info(self) -> None:
         self._limiter()
+        
         response = requests.get(self.url)
         soup = BeautifulSoup(response.text, 'html.parser')
 
@@ -34,23 +32,32 @@ class CinemaSpider:
 
         self.movies_dir = movies_dir
 
-
-    def get_price_info(self):
-        """Get the prices of the movies from the cinema's website."""
-
+    def _scrap_price_info(self):
         self._limiter()
+        
         response = requests.get(self.url)
         soup = BeautifulSoup(response.text, 'html.parser')
 
         prices = soup.find('div', id='theater-prices-2107')
         self.movies_prices = prices.get_text()
+        
+    def get_prices(self) -> str:
+        if not self.movies_prices:
+            self._scrap_price_info()
+        return self.movies_prices
+    
+    def get_times_dir(self) -> dict:
+        if not self.movies_dir:
+            self._scrap_movies_info()
+        return self.movies_dir
+        
 
 
 def main():
     spider = CinemaSpider()
-    spider.get_movies_info()
+    spider.get_times_dir()
     print(spider.movies_dir)
-    spider.get_price_info()
+    spider.get_prices()
     print(spider.movies_prices)
 
 
