@@ -1,1 +1,6 @@
 datasets/
+__pycache__/
+*.safetensors
+*.bin
+*.json
+*.txt
