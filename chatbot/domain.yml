@@ -1,0 +1,70 @@
+version: "3.1"
+
+intents:
+  - greet
+  - goodbye
+  - affirm
+  - deny
+  - mood_great
+  - mood_unhappy
+  - bot_challenge
+  - assistir
+
+responses:
+
+  utter_ask_nomeFilme:
+  - text: "Qual o filme que você quer ver?"
+
+  utter_ask_horário:
+  - text: "Qual o horário da sessão que você quer ver?"
+
+  utter_ask_confirmacaoFinal:
+  - text: "Marcar o filme {nomeFilme} no horário {horário} então?"
+
+  utter_filme_marcado:
+  - text: "Sessão marcada com sucesso!"
+
+  utter_greet:
+  - text: "Ola! Como você está?"
+
+  utter_cheer_up:
+  - text: "Aqui algo para te animar!:"
+    image: "https://i.imgur.com/nGF1K8f.jpg"
+
+  utter_did_that_help:
+  - text: "Se sentindo melhor agora?"
+
+  utter_happy:
+  - text: "Ótimo, que bom!"
+
+  utter_goodbye:
+  - text: "Adeus"
+
+  utter_iamabot:
+  - text: "Eu sou um bot, suportado pelo Rasa."
+
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true
+
+slots:
+  nomeFilme:
+    type: text
+    mappings:
+    - type: from_entity
+      entity: entity_name
+  
+  horário:
+    type: text
+    mappings:
+    - type: from_entity
+      entity: entity_name
+
+  confirmacaoFinal:
+    type: bool
+    mappings:
+    - type: from_entity
+      entity: entity_name
+
+
+

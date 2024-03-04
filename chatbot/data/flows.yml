@@ -1,0 +1,15 @@
+flows:
+  achar_sessao:
+    description: Esse flow permite que o usuário ache a sessão de um filme
+    steps:
+     - collect: nomeFilme
+     - collect: horário
+     - collect: confirmacaoFinal
+        next:
+          - if: not confirmacaoFinal
+              then:
+                - action: utter_filme_nao_marcado
+          - else: marcado_sucesso
+
+     - action: utter_filme_marcado
+       id: marcado_sucesso
