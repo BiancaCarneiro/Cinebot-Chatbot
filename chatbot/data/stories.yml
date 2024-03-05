@@ -1,0 +1,116 @@
+version: "3.1"
+
+stories:
+  
+- story: compra_ingresso_negativa
+  steps:
+  - intent: cumprimentar
+  - action: utter_greet
+  - intent: assistir_filme
+  - action: utter_ask_nomeFilme
+  - intent: selecionar_filme
+    entities:
+    - nomeFilme: Dune
+  - slot_was_set:
+    - nomeFilme: Dune
+  - action: action_consultar_horarios
+  - action: utter_ask_horario
+  - intent: informar_horario
+    entities:
+    - horarioFilme: "18:00"
+  - slot_was_set:
+    - horarioFilme: "18:00"
+  - action: utter_ask_confirmacaoFinal
+  - intent: negar
+  - action: utter_goodbye
+
+- story: compra_ingresso_positivo
+  steps:
+  - intent: cumprimentar
+  - action: utter_greet
+  - intent: assistir_filme
+  - action: utter_ask_nomeFilme
+  - intent: selecionar_filme
+    entities:
+    - filme: Matrix Resurrections
+  - slot_was_set:
+    - nomeFilme: Matrix Resurrections
+  - action: action_consultar_horarios
+  - action: utter_ask_horario
+  - intent: informar_horario
+    entities:
+    - horario: "20:00"
+  - slot_was_set:
+    - horarioFilme: "20:00"
+  - action: utter_ask_confirmacaoFinal
+  - intent: afirmar
+  - action: utter_finalizar
+
+- story: interactive_story_1
+  steps:
+  - intent: cumprimentar
+  - action: utter_greet
+  - intent: assistir_filme
+  - action: utter_ask_nomeFilme
+  - intent: selecionar_filme
+    entities:
+    - filme: Wars
+  - slot_was_set:
+    - nomeFilme: Wars
+  - intent: selecionar_filme
+    entities:
+    - filme: Star Wars
+  - action: action_consultar_horarios
+  - action: utter_ask_horario
+  - intent: informar_horario
+    entities:
+    - horario: "13:00"
+  - slot_was_set:
+    - horarioFilme: "13:00"
+  - action: utter_ask_confirmacaoFinal
+  - intent: afirmar
+  - action: utter_finalizar
+
+- story: interactive_story_2
+  steps:
+  - intent: cumprimentar
+  - action: utter_greet
+  - intent: assistir_filme
+  - action: utter_ask_nomeFilme
+  - intent: selecionar_filme
+    entities:
+    - filme: Matrix Resurrections
+  - slot_was_set:
+    - nomeFilme: Matrix Resurrections
+  - action: action_consultar_horarios
+  - action: utter_ask_horario
+  - intent: informar_horario
+    entities:
+    - horario: "13:00"
+  - slot_was_set:
+    - horarioFilme: "13:00"
+  - action: utter_ask_confirmacaoFinal
+  - intent: afirmar
+  - action: utter_finalizar
+
+- story: interactive_story_1
+  steps:
+  - intent: cumprimentar
+  - action: utter_greet
+  - intent: assistir_filme
+  - action: utter_ask_nomeFilme
+  - intent: selecionar_filme
+    entities:
+    - filme: Matrix Resurrections
+  - slot_was_set:
+    - nomeFilme: Matrix Resurrections
+  - action: action_consultar_horarios
+  - action: utter_ask_horario
+  - intent: informar_horario
+    entities:
+    - horario: 19:00
+  - slot_was_set:
+    - horarioFilme: 19:00
+  - action: utter_ask_confirmacaoFinal
+  - intent: negar
+  - action: utter_goodbye
