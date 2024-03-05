@@ -45,3 +45,14 @@ class ActionConsultarHorarios(Action):
         dispatcher.utter_message(text=total_horas)
 
         return []
+    
+class ActionVerificarHorario(Action):
+
+    def name(self) -> Text:
+        return "action_verificar_horarios"
+    
+    def run(self, dispatcher: CollectingDispatcher,
+             tracker: Tracker,
+             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+        
+        return []
