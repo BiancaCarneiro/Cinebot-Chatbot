@@ -15,6 +15,9 @@ nlu:
     - Dia
     - Boatarde
     - Boa noite
+    - ola
+    - alou
+    - oi
 - intent: despedida
   examples: |
     - tchau
@@ -34,6 +37,8 @@ nlu:
     - com certeza
     - parece bom
     - correto
+    - Sim
+    - siim
 - intent: negar
   examples: |
     - não
@@ -50,46 +55,41 @@ nlu:
     - Qual filme está em cartaz?
     - Quando posso ver um filme?
     - Estou interessado em assistir um filme
+    - quero ver um filme
+    - quero assistir um filme
 - intent: comprar_ingresso
   examples: |
     - Quero comprar um ingresso
     - Como faço para adquirir um ingresso?
     - Posso reservar um lugar para o filme?
     - Gostaria de comprar ingressos para o filme
-
 - intent: selecionar_filme
   examples: |
     - Quero assistir [Spider-Man: No Way Home](filme)
     - Gostaria de ver [Dune](filme)
     - Quero assistir [The Matrix Resurrections](filme)
-- regex: horario_filme
-  examples: |
-    - (^([0-1]\d|2[0-3]):([0-5]\d)$)
-
+    - [Matrix Resurrections](filme)
+    - Quero assistir [Star Wars](filme)
+    - [Matrix Resurrections](filme)
 - intent: informar_horario
   examples: |
-    - Quero o horário das [18:00](horario_filme)
-    - [18:00](horario_filme)
-    - [21:00](horario_filme)
-    - Quero o horário das [21 horas](horario_filme)
-- intent: selecionar_data
-  examples: |
-    - Quero assistir o filme nessa segunda
-    - Nessa terça
-    - Amanhã
-    - Segunda-feira
-
+    - Quero o horário das [18:00](horario)
+    - [18:00](horario)
+    - [21:00](horario)
+    - [20:00](horario)
+    - [13:00](horario)
+    - [16:00](horario)
+    - [19:00](horario)
 - synonym: filme
   examples: |
     - Spider-Man: No Way Home
     - Dune
     - The Matrix Resurrections
     - The Batman
-
-- synonym: horario_filme
+- synonym: horario
   examples: |
     - 18:00
     - 20:30
     - 16:45
-    - 13 horas
-    - 3 horas
+    - 13:00
+    - 00:30

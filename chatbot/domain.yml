@@ -2,63 +2,53 @@ version: '3.1'
 intents:
 - afirmar
 - assistir_filme
-- checar_sessoes
 - comprar_ingresso
 - confirmacao_final
 - cumprimentar
 - despedida
-- detalhes_filme
 - informar_horario
 - negar
-- selecionar_data
 - selecionar_filme
-
 responses:
-  
   utter_ask_nomeFilme:
-    - text: "Qual o nome do filme que você deseja assistir?"
-  
+  - text: Qual o nome do filme que você deseja assistir?
   utter_ask_horario:
-    - text: "Certo, o filme é {nomeFilme}! Qual o horário da sessão que você quer ver?"
-  
+  - text: Certo, o filme é {nomeFilme}! Qual o horário da sessão que você quer ver, digite no formato HH:MM?
   utter_ask_confirmacaoFinal:
-    - text: Marcar o filme {nomeFilme} no horário {horarioFilme} então?
-  
+  - text: Marcar o filme {nomeFilme} no horário {horarioFilme} então?
   utter_ask_data:
-    - text: Qual a data que deseja assistir esse filme?
-  
-  utter_filme_marcado:
-    - text: Sessão marcada com sucesso!
-  
+  - text: Qual a data que deseja assistir esse filme?
   utter_greet:
-    - text: Ola! Em que posso ajudar hoje?
-  
+  - text: Ola! Em que posso ajudar hoje?
   utter_finalizar:
-    - text: Certo, reserva feita! Obrigado!
-  
+  - text: Certo, reserva feita! Obrigado!
   utter_goodbye:
-    - text: Adeus
-
-
+  - text: Adeus
 session_config:
   session_expiration_time: 5
   carry_over_slots_to_new_session: true
-
 entities:
+- horario
 - filme
-- horario_filme
-
 slots:
   nomeFilme:
     type: text
     influence_conversation: true
     mappings:
-      - type: from_entity
-        entity: filme
-
+    - type: from_entity
+      entity: filme
   horarioFilme:
     type: text
     influence_conversation: true
     mappings:
-      - type: from_entity
-        entity: horario_filme
+    - type: from_entity
+      entity: horario
+actions:
+- utter_greet
+- utter_ask_confirmacaoFinal
+- utter_goodbye
+- utter_ask_horario
+- action_consultar_horarios
+- utter_ask_nomeFilme
+- utter_finalizar
+- utter_ask_data
