@@ -1,91 +1,95 @@
 version: "3.1"
-
 nlu:
-- intent: greet
+- intent: cumprimentar
   examples: |
-    - hey
-    - hello
-    - hi
-    - hello there
-    - good morning
-    - good evening
-    - moin
-    - hey there
-    - let's go
-    - hey dude
-    - goodmorning
-    - goodevening
-    - good afternoon
-
-- intent: goodbye
+    - Olá
+    - Alou
+    - Oi
+    - Eai
+    - Bom dia
+    - Boa tarde
+    - manhã
+    - Oie
+    - Vamos
+    - Ei
+    - Dia
+    - Boatarde
+    - Boa noite
+- intent: despedida
   examples: |
-    - cu
-    - good by
-    - cee you later
-    - good night
-    - bye
-    - goodbye
-    - have a nice day
-    - see you around
-    - bye bye
-    - see you later
-
-- intent: affirm
+    - tchau
+    - tchiau
+    - até mais
+    - boa noite
+    - adeus
+    - tchau tchau
+    - tenha um bom dia
+    - te vejo por ai
+    - até
+- intent: afirmar
   examples: |
-    - yes
-    - y
-    - indeed
-    - of course
-    - that sounds good
-    - correct
-
-- intent: deny
+    - sim
+    - s
+    - claro
+    - com certeza
+    - parece bom
+    - correto
+- intent: negar
   examples: |
-    - no
+    - não
+    - nao
     - n
-    - never
-    - I don't think so
-    - don't like that
-    - no way
-    - not really
-
-- intent: mood_great
+    - nunca
+    - acho que não
+    - não gosto assim
+    - de jeito nenhum
+    - na verdade não
+- intent: assistir_filme
   examples: |
-    - perfect
-    - great
-    - amazing
-    - feeling like a king
-    - wonderful
-    - I am feeling very good
-    - I am great
-    - I am amazing
-    - I am going to save the world
-    - super stoked
-    - extremely good
-    - so so perfect
-    - so good
-    - so perfect
-
-- intent: mood_unhappy
+    - Quero assistir a um filme
+    - Qual filme está em cartaz?
+    - Quando posso ver um filme?
+    - Estou interessado em assistir um filme
+- intent: comprar_ingresso
   examples: |
-    - my day was horrible
-    - I am sad
-    - I don't feel very well
-    - I am disappointed
-    - super sad
-    - I'm so sad
-    - sad
-    - very sad
-    - unhappy
-    - not good
-    - not very good
-    - extremly sad
-    - so saad
-    - so sad
+    - Quero comprar um ingresso
+    - Como faço para adquirir um ingresso?
+    - Posso reservar um lugar para o filme?
+    - Gostaria de comprar ingressos para o filme
 
-- intent: bot_challenge
+- intent: selecionar_filme
   examples: |
-    - are you a bot?
-    - are you a human?
-    - am I talking to a bot?
-    - am I talking to a human?
+    - Quero assistir [Spider-Man: No Way Home](filme)
+    - Gostaria de ver [Dune](filme)
+    - Quero assistir [The Matrix Resurrections](filme)
+- regex: horario_filme
+  examples: |
+    - (^([0-1]\d|2[0-3]):([0-5]\d)$)
+
+- intent: informar_horario
+  examples: |
+    - Quero o horário das [18:00](horario_filme)
+    - [18:00](horario_filme)
+    - [21:00](horario_filme)
+    - Quero o horário das [21 horas](horario_filme)
+- intent: selecionar_data
+  examples: |
+    - Quero assistir o filme nessa segunda
+    - Nessa terça
+    - Amanhã
+    - Segunda-feira
+
+- synonym: filme
+  examples: |
+    - Spider-Man: No Way Home
+    - Dune
+    - The Matrix Resurrections
+    - The Batman
+
+- synonym: horario_filme
+  examples: |
+    - 18:00
+    - 20:30
+    - 16:45
+    - 13 horas
+    - 3 horas
