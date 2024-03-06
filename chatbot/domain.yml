@@ -9,13 +9,13 @@ intents:
 - informar_horario
 - negar
 - selecionar_filme
+- descobrir_preco
+- descobrir_filmes
 responses:
   utter_ask_nomeFilme:
   - text: Qual o nome do filme que você deseja assistir?
   utter_ask_horario:
   - text: Certo, o filme é {nomeFilme}! Qual o horário da sessão que você quer ver, digite no formato HH:MM?
-  utter_ask_confirmacaoFinal:
-  - text: Marcar o filme {nomeFilme} no horário {horarioFilme} então?
   utter_ask_data:
   - text: Qual a data que deseja assistir esse filme?
   utter_greet:
@@ -44,11 +44,14 @@ slots:
     - type: from_entity
       entity: horario
 actions:
+- utter_finalizar
+- utter_ask_nomeFilme
+- action_verificar_filme
 - utter_greet
-- utter_ask_confirmacaoFinal
-- utter_goodbye
+- action_ask_confirmacaoFinal
 - utter_ask_horario
 - action_consultar_horarios
-- utter_ask_nomeFilme
-- utter_finalizar
+- utter_goodbye
 - utter_ask_data
+- action_ask_precos
+- action_ask_filmes
