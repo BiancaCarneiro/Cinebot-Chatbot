@@ -26,7 +26,7 @@ def plot_most_frequent_word(tokenized_words:list, stopwords:list=[]) -> None:
             x.append(word)
             y.append(count)
 
-    sns.barplot(x=y,y=x)
+    sns.barplot(x=y,y=x, palette="Set2")
     
 def cloud_of_words(text: str, stopwords: list, filename:str=None) -> None:
     wordcloud = WordCloud(max_font_size=60, max_words=150, background_color="white", collocations=False, stopwords=stopwords).generate(text)
