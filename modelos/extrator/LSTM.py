@@ -2,6 +2,7 @@ import torch
 import torch.nn as nn
 import torch.optim as optim
 from tqdm.auto import tqdm
+from sklearn.metrics import classification_report
 
 
 def prepare_sequence(seq: list, word_to_ix:dict, device:torch.DeviceObjType):
@@ -122,6 +123,8 @@ def test_LSTM(
     model.eval()  # Define o modelo em modo de avaliação
     correct = 0
     total = 0
+    predicted = []
+    actuals = []
     with torch.no_grad():
         for sentence, tags in test_data:
             inputs = prepare_sequence(sentence, word_to_ix, device)
@@ -129,7 +132,7 @@ def test_LSTM(
             tag_scores = model(inputs)
             _, predicted_tags = torch.max(tag_scores, dim=1)
             predicted_tags = predicted_tags.cpu().numpy()
-            total += targets.size(0)
-            correct += sum([1 for i in range(len(predicted_tags)) if predicted_tags[i] == targets[i]])
-    accuracy = correct / total
-    print(f'Test Accuracy: {accuracy}')
+            predicted += list(predicted_tags)
+            actuals += list(targets)
+            
+    print(classification_report(actuals, predicted))
