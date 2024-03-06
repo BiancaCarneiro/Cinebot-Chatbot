@@ -1,12 +1,9 @@
 # Chatbot-NLP
+Nesse projeto vamos criar um chatbot que funcionaria como um assistente virutal que serve para dar informações e vender ingressos.
 
-Dataset: https://github.com/google-research-datasets/ccpe
+Nosso chatbot conta com detecção de intenções e utiliza um web-scraper para coletar informações do cinema do shopping 'Rio Mar Recife'. A partir dessas informações ele possui as funções de mostrar os filmes em cartaz e de mostrar os preços dos ingressos. Além disso ele é capaz de entender o filme que você quer assistir e o horário que deseja assistir ele para, enfim, poder reservar.
 
-Dataset chat-gpt: https://drive.google.com/drive/folders/13gh-mX-EJZbzJIJCOxNQTuqVjFqWf0fL?usp=drive_link
+Além do chatbot, em outro segmento do projeto, utilizamos diferentes arquiteturas (LSTM, Transformers, CNN e SVM) para conseguir detectar intenções dos textos presentes em nosso dataset. 
+Fora isso, também construimos um extrator de entidades para que seja possível extrair entidades ,como nome de filmes, genêro, etc, que são importantes para esse contexto. O modelo utilizado para tal detecção foi uma LSTM.
 
-Dataset informações: https://www.kaggle.com/datasets/ashirwadsangwan/imdb-dataset/data
- - https://www.kaggle.com/datasets/harshitshankhdhar/imdb-dataset-of-top-1000-movies-and-tv-shows
- - QA movies: https://huggingface.co/datasets/wiki_movies?row=2
- - Movies reviews: https://www.kaggle.com/datasets/wassimderbel/imdb-movies-reviews?select=reviews_data.csv
- - Movies descriptions: https://www.kaggle.com/datasets/ishikajohari/imdb-data-with-descriptions
-Ideia: criar inteção para checar horários de filme do cinema do shopping recife
+O nosso dataset foi feito com o Chat-GPT para criar frases que faziam sentido no nosso contexto de um chatbot de ajuda e compra de filmes de um cinema.
