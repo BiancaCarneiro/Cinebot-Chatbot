@@ -52,7 +52,6 @@ nlu:
 - intent: assistir_filme
   examples: |
     - Quero assistir a um filme
-    - Qual filme está em cartaz?
     - Quando posso ver um filme?
     - Estou interessado em assistir um filme
     - quero ver um filme
@@ -65,12 +64,18 @@ nlu:
     - Gostaria de comprar ingressos para o filme
 - intent: selecionar_filme
   examples: |
-    - Quero assistir [Spider-Man: No Way Home](filme)
-    - Gostaria de ver [Dune](filme)
-    - Quero assistir [The Matrix Resurrections](filme)
+    - Quero assistir [Demon Slayer: Hashira Training](filme)
+    - Gostaria de ver [Duna](filme)
+    - Quero assistir [Apaixonada](filme)
     - [Matrix Resurrections](filme)
     - Quero assistir [Star Wars](filme)
-    - [Matrix Resurrections](filme)
+    - O filme que eu quero ver é [Duna](filme)
+    - Na verdade o filme é [Star Wars](filme)
+    - [Duna](filme)
+    - [Barbie](filme)
+    - Eu quero ver [Barbie](filme)
+    - O filme é [Desespero Profundo](filme)
+    - A Serva [A Serva](filme)
 - intent: informar_horario
   examples: |
     - Quero o horário das [18:00](horario)
@@ -80,16 +85,54 @@ nlu:
     - [13:00](horario)
     - [16:00](horario)
     - [19:00](horario)
-- synonym: filme
+    - [14:00](horario)
+    - Eu quero a sessão das [15:00](horario)
+
+- intent: descobrir_preco
   examples: |
-    - Spider-Man: No Way Home
-    - Dune
-    - The Matrix Resurrections
-    - The Batman
-- synonym: horario
+    - Quero saber o preço dos ingressos
+    - Qual o preço dos ingressos?
+    - Quanto custam os ingressos?
+    - Quanto custa o ingresso?
+    - Qual o custo do ticket?
+    - Qual o preço?
+
+- intent: descobrir_filmes
   examples: |
-    - 18:00
-    - 20:30
-    - 16:45
-    - 13:00
-    - 00:30
+    - Quais os filmes em cartaz?
+    - Quais os filmes que posso ver?
+    - Quais são os filmes atualmente em cartaz?
+    - Me mostre os filmes em cartaz
+    - Quais filmes estão disponíveis?
+    - Quais filmes posso ver?
+    - Qual filme está em cartaz?
+
+# - synonym: filme
+#   examples: |
+#     - Barbie
+#     - Dune
+#     - A Serva
+#     - "Bob Marley - One Love"
+#     - Demon Slayer: Hashira Training
+#     - Duna: Parte II
+#     - Empirion: Uma Aventura Com Einstein
+#     - Ferrari
+#     - Madame Teia
+#     - O Menino e A Garça
+#     - "O Reino Gelado – A Magia Continua"
+#     - Pobres Criaturas
+#     - Todos Menos Você
+#     - Zona de Interesse
+#     - Zona de Risco
+#     - Anatomia de Uma Queda
+#     - Apaixonada
+#     - Desespero Profundo
+#     - Garra de Ferro
+#     - Os Farofeiros 2
+#     - Os Rejeitados
+#     - A Cor Púrpura
+#     - Assassinos da Lua das Flores
+#     - Oppenheimer
+#     - "Vocal Livre - Temporal"
+#     - The Chosen: Os Escolhidos
+#     - Hate to Love: Nickelback'

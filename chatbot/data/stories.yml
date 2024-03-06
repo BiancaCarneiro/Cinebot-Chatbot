@@ -2,29 +2,7 @@ version: "3.1"
 
 stories:
   
-- story: compra_ingresso_negativa
-  steps:
-  - intent: cumprimentar
-  - action: utter_greet
-  - intent: assistir_filme
-  - action: utter_ask_nomeFilme
-  - intent: selecionar_filme
-    entities:
-    - nomeFilme: Dune
-  - slot_was_set:
-    - nomeFilme: Dune
-  - action: action_consultar_horarios
-  - action: utter_ask_horario
-  - intent: informar_horario
-    entities:
-    - horarioFilme: "18:00"
-  - slot_was_set:
-    - horarioFilme: "18:00"
-  - action: utter_ask_confirmacaoFinal
-  - intent: negar
-  - action: utter_goodbye
-
-- story: compra_ingresso_positivo
+- story: compra_positiva
   steps:
   - intent: cumprimentar
   - action: utter_greet
@@ -35,16 +13,36 @@ stories:
     - filme: Matrix Resurrections
   - slot_was_set:
     - nomeFilme: Matrix Resurrections
-  - action: action_consultar_horarios
-  - action: utter_ask_horario
+  - action: action_verificar_filme
   - intent: informar_horario
     entities:
-    - horario: "20:00"
+    - horario: "13:00"
   - slot_was_set:
-    - horarioFilme: "20:00"
-  - action: utter_ask_confirmacaoFinal
+    - horarioFilme: "13:00"
+  - action: action_ask_confirmacaoFinal
   - intent: afirmar
   - action: utter_finalizar
+
+- story: compra_negativa
+  steps:
+  - intent: cumprimentar
+  - action: utter_greet
+  - intent: assistir_filme
+  - action: utter_ask_nomeFilme
+  - intent: selecionar_filme
+    entities:
+    - filme: Matrix Resurrections
+  - slot_was_set:
+    - nomeFilme: Matrix Resurrections
+  - action: action_verificar_filme
+  - intent: informar_horario
+    entities:
+    - horario: "19:00"
+  - slot_was_set:
+    - horarioFilme: "19:00"
+  - action: action_ask_confirmacaoFinal
+  - intent: negar
+  - action: utter_goodbye
 
 - story: interactive_story_1
   steps:
@@ -54,63 +52,127 @@ stories:
   - action: utter_ask_nomeFilme
   - intent: selecionar_filme
     entities:
-    - filme: Wars
+    - filme: Duna
   - slot_was_set:
-    - nomeFilme: Wars
+    - nomeFilme: Duna
+  - action: action_verificar_filme
+  - intent: cumprimentar
   - intent: selecionar_filme
     entities:
-    - filme: Star Wars
-  - action: action_consultar_horarios
-  - action: utter_ask_horario
+    - filme: Barbie
+  - action: action_verificar_filme
   - intent: informar_horario
     entities:
-    - horario: "13:00"
+    - horario: "14:00"
   - slot_was_set:
-    - horarioFilme: "13:00"
-  - action: utter_ask_confirmacaoFinal
+    - horarioFilme: "14:00"
+  - action: action_ask_confirmacaoFinal
   - intent: afirmar
   - action: utter_finalizar
 
-- story: interactive_story_2
+- story: filme_direto
   steps:
-  - intent: cumprimentar
-  - action: utter_greet
-  - intent: assistir_filme
-  - action: utter_ask_nomeFilme
   - intent: selecionar_filme
     entities:
-    - filme: Matrix Resurrections
+    - filme: Barbie
   - slot_was_set:
-    - nomeFilme: Matrix Resurrections
-  - action: action_consultar_horarios
-  - action: utter_ask_horario
+    - nomeFilme: Barbie
+  - action: action_verificar_filme
   - intent: informar_horario
     entities:
-    - horario: "13:00"
+    - horario: "14:00"
   - slot_was_set:
-    - horarioFilme: "13:00"
-  - action: utter_ask_confirmacaoFinal
+    - horarioFilme: "14:00"
+  - action: action_ask_confirmacaoFinal
   - intent: afirmar
   - action: utter_finalizar
 
-- story: interactive_story_1
+- story: filme_direto_2
+  steps:
+  - intent: descobrir_filmes
+  - action: action_ask_filmes
+  - intent: descobrir_preco
+  - action: action_ask_precos
+  - intent: selecionar_filme
+    entities:
+    - filme: Duna
+  - slot_was_set:
+    - nomeFilme: Duna
+  - action: action_verificar_filme
+  - intent: cumprimentar
+  - intent: selecionar_filme
+    entities:
+    - filme: Barbie
+  - action: action_verificar_filme
+  - intent: informar_horario
+    entities:
+    - horario: "14:00"
+  - slot_was_set:
+    - horarioFilme: "14:00"
+  - action: action_ask_confirmacaoFinal
+  - intent: afirmar
+  - action: utter_finalizar
+
+
+- story: filme_direto_2
+  steps:
+  - intent: descobrir_filmes
+  - action: action_ask_filmes
+  - intent: selecionar_filme
+    entities:
+    - filme: Barbie
+  - slot_was_set:
+    - nomeFilme: Barbie
+  - action: action_verificar_filme
+  - intent: cumprimentar
+  - intent: selecionar_filme
+    entities:
+    - filme: Barbie
+  - action: action_verificar_filme
+  - intent: informar_horario
+    entities:
+    - horario: "14:00"
+  - slot_was_set:
+    - horarioFilme: "14:00"
+  - action: action_ask_confirmacaoFinal
+  - intent: afirmar
+  - action: utter_finalizar
+
+- story: descobrir_filmes
   steps:
   - intent: cumprimentar
   - action: utter_greet
-  - intent: assistir_filme
-  - action: utter_ask_nomeFilme
+  - intent: descobrir_filmes
+  - action: action_ask_filmes
+
+- story: descobrir_precos
+  steps:
+  - intent: cumprimentar
+  - action: utter_greet
+  - intent: descobrir_preco
+  - action: action_ask_precos
+
+- story: descobrir_filmes_assistir
+  steps:
+  - intent: descobrir_preco
+  - action: action_ask_precos
   - intent: selecionar_filme
     entities:
-    - filme: Matrix Resurrections
+    - filme: Barbie
   - slot_was_set:
-    - nomeFilme: Matrix Resurrections
-  - action: action_consultar_horarios
-  - action: utter_ask_horario
+    - nomeFilme: Barbie
+  - action: action_verificar_filme
+  - intent: cumprimentar
+  - intent: selecionar_filme
+    entities:
+    - filme: Barbie
+  - action: action_verificar_filme
   - intent: informar_horario
     entities:
-    - horario: 19:00
+    - horario: "14:00"
   - slot_was_set:
-    - horarioFilme: 19:00
-  - action: utter_ask_confirmacaoFinal
-  - intent: negar
-  - action: utter_goodbye
+    - horarioFilme: "14:00"
+  - action: action_ask_confirmacaoFinal
+  - intent: afirmar
+  - action: utter_finalizar
+  
