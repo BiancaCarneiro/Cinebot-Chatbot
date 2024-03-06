@@ -49,8 +49,8 @@ def train_lstm(
         tag_to_ix:dict,
         embedding_dim:int,
         hidden_dim:int,
-        patience:int = 5,
-        lr:float = 0.1
+        patience:int = 3,
+        lr:float = 0.01
     ) -> LSTMModel:
     
     best_val_loss = float('inf')

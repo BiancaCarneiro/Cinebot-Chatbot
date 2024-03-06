@@ -1,7 +1,8 @@
 datasets/
+imgs/
+classificador_transformers
 __pycache__/
 *.safetensors
 *.bin
 *.json
 *.txt
-classificador_transformers
