@@ -7,3 +7,9 @@ Além do chatbot, em outro segmento do projeto, utilizamos diferentes arquitetur
 Fora isso, também construimos um extrator de entidades para que seja possível extrair entidades ,como nome de filmes, genêro, etc, que são importantes para esse contexto. O modelo utilizado para tal detecção foi uma LSTM.
 
 O nosso dataset foi feito com o Chat-GPT para criar frases que faziam sentido no nosso contexto de um chatbot de ajuda e compra de filmes de um cinema.
+
+## Links da Apresentação
+
+[Vídeo](https://www.youtube.com/watch?v=37X5OKuvRsc)
+
+[Slides](https://docs.google.com/presentation/d/15Eb0yocqlSMiVjWS-Mm5ry3U9Xoop4KQLtF8V1EC-wY/edit?usp=sharing)
